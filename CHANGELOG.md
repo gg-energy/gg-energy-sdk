@@ -3,6 +3,16 @@
 Integration changes and fixes are listed by version. Published versions are
 immutable; use a newer version for fixes.
 
+## [0.1.6] - 2026-10-06
+
+### Fixed
+
+- Recover the charging summary when a completed stop is missing its realtime
+  event, and keep checking while a stop is pending.
+- Show feedback when a charge cannot start because required request details are
+  missing.
+- Improve the session summary, fare breakdown, and iOS map appearance.
+
 ## [0.1.5] - 2026-09-23
 
 ### Changed
@@ -39,6 +49,15 @@ immutable; use a newer version for fixes.
 ### Changed
 
 - No SDK API or integration changes from 0.1.0.
+
+## [0.1.2] - 2026-09-23
+
+### Fixed
+
+- Publish Android target artifacts under distinct Maven Central coordinates so
+  Gradle resolves the Android AAR and its runtime dependencies correctly.
+- Publish the host-owned 2GIS integration as
+  `gg.team.energy:sdk-energy-android-external-map`.
 
 ## [0.1.0] - 2026-09-22
 
