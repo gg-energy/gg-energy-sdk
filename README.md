@@ -14,7 +14,7 @@ Android apps without an existing 2GIS integration can install from Maven
 Central:
 
 ```kotlin
-implementation("gg.team.energy:sdk-energy:0.1.5")
+implementation("gg.team.energy:sdk-energy:0.1.6")
 ```
 
 If your Android app already has a compatible 2GIS runtime, choose the

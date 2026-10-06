@@ -16,10 +16,10 @@ repositories {
 
 ```kotlin
 // Default: ggEnergy supplies the map runtime.
-implementation("gg.team.energy:sdk-energy:0.1.5")
+implementation("gg.team.energy:sdk-energy:0.1.6")
 
 // Only if your app already owns a compatible 2GIS runtime.
-implementation("gg.team.energy:sdk-energy-android-external-map:0.1.5")
+implementation("gg.team.energy:sdk-energy-android-external-map:0.1.6")
 ```
 
 Do not include both artifacts.

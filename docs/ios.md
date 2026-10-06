@@ -6,12 +6,12 @@ and later and presents the SDK full-screen over your view controller.
 
 ## 1. Add the released package
 
-Download [GGEnergyKit-0.1.5.zip](https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.1.5/GGEnergyKit-0.1.5.zip)
-from the [0.1.5 release](https://github.com/gg-energy/gg-energy-sdk/releases/tag/v0.1.5)
+Download [GGEnergyKit-0.1.6.zip](https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.1.6/GGEnergyKit-0.1.6.zip)
+from the [0.1.6 release](https://github.com/gg-energy/gg-energy-sdk/releases/tag/v0.1.6)
 along with its `.sha256` file. Verify the archive, then unzip it:
 
 ```sh
-shasum -a 256 -c GGEnergyKit-0.1.5.zip.sha256
+shasum -a 256 -c GGEnergyKit-0.1.6.zip.sha256
 ```
 
 In Xcode, add the unzipped directory containing `Package.swift`
