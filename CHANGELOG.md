@@ -3,6 +3,20 @@
 Integration changes and fixes are listed by version. Published versions are
 immutable; use a newer version for fixes.
 
+## [0.1.7] - Unreleased
+
+### Added
+
+- Install GGEnergyKit through remote Swift Package Manager using the public
+  repository URL, with a version-pinned framework checksum.
+- Show available adapter quantities beside the connector status.
+
+### Changed
+
+- Include compatible stocked adapters when filtering stations by vehicle connector.
+- Display active-session charging time as hours and minutes.
+- Show a connector illustration and unplug instruction while charging stops.
+
 ## [0.1.6] - 2026-10-06
 
 ### Fixed
