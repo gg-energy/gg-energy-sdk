@@ -1,53 +1,35 @@
 # iOS integration
 
-The iOS SDK is provided as `GGEnergyKit`, a Swift package that wraps the
-ggEnergy binary framework and its required map resources. It supports iOS 16
-and later and presents the SDK full-screen over your view controller.
+Add **GGEnergyKit** with Swift Package Manager (SPM). Requires **iOS 16 or later**.
 
-## 1. Add the released package
+## 1. Add the Swift package
 
-Download [GGEnergyKit-0.1.6.zip](https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.1.6/GGEnergyKit-0.1.6.zip)
-from the [0.1.6 release](https://github.com/gg-energy/gg-energy-sdk/releases/tag/v0.1.6)
-along with its `.sha256` file. Verify the archive, then unzip it:
+In Xcode, choose **File → Add Package Dependencies** and enter:
 
-```sh
-shasum -a 256 -c GGEnergyKit-0.1.6.zip.sha256
+```text
+https://github.com/gg-energy/gg-energy-sdk.git
 ```
 
-In Xcode, add the unzipped directory containing `Package.swift`
-as a **local Swift package**, then link the `GGEnergyKit` product to your app.
-Keep that exact archive in your dependency store so CI and other developers
-build with the same SDK version.
+Choose **Exact Version: 0.1.7**, then add **GGEnergyKit** to your app target.
+Xcode downloads the SDK and verifies its checksum automatically.
+Commit `Package.resolved` to keep your team's dependency versions consistent.
 
-The GitHub repository contains documentation and release assets, not a
-repository-root Swift package. Do not enter this repository URL in Xcode's
-remote package field. Ask [info@goenergy.am](mailto:info@goenergy.am) for
-partner credentials and platform configuration.
+If your app already uses 2GIS, check [compatibility](#apps-that-already-use-2gis) first.
 
-## 2. Check host requirements
+## 2. Allow location access
 
-Use the **GGEnergyKit** product for both map modes below. The package declares
-2GIS **FullSDK** (`mobile-sdk-full-swift-package`) starting at version **13.6.0**
-and below 14.0.0. If your app already uses that package, its version requirement
-must overlap this range so Swift Package Manager can resolve one shared runtime.
-Do not embed another `DGis.xcframework` manually.
-
-2GIS MapSDK and FullSDK cannot be linked into the same app. If your app uses
-MapSDK, a manually embedded framework, or an incompatible FullSDK version,
-contact [info@goenergy.am](mailto:info@goenergy.am) before integrating.
-The external-container mode does not remove the FullSDK package dependency.
-
-Add a location usage description to the host app's `Info.plist`:
+Add this to your app's `Info.plist`:
 
 ```xml
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>We use your location to show your position and nearby charging stations.</string>
 ```
 
-## 3. Open the SDK with the included map setup
+## 3. Open Energy
 
-After your backend returns a fresh bootstrap token, present the SDK from a
-`UIViewController`:
+Have your backend [create a fresh bootstrap token](backend-integration.md).
+Keep partner credentials on your backend. On the main thread, open Energy
+from your `UIViewController`:
 
 ```swift
 import GGEnergyKit
@@ -58,8 +40,16 @@ try GGEnergySdk.open(
 )
 ```
 
-This is the default `mapProvider: .sdkManaged` mode. ggEnergy creates its own
-2GIS container. No separate 2GIS setup is needed in your app.
+The SDK opens full-screen and sets up the map automatically.
+Request a new token for every launch; do not store or log it.
+
+## Apps that already use 2GIS
+
+GGEnergyKit requires 2GIS **FullSDK 13.6.0 or later, below 14.0.0**.
+Your app's version requirement must overlap this range. Do not manually embed
+a second `DGis.xcframework` or combine 2GIS MapSDK with FullSDK.
+If your setup is incompatible, contact [info@goenergy.am](mailto:info@goenergy.am).
+Using your own container still requires the FullSDK package dependency.
 
 ## Reuse your app's 2GIS container
 
@@ -95,3 +85,21 @@ bootstrap-token flow and the same `GGEnergyKit` product.
 The SDK owns presentation and dismissal. Do not embed its view inside another
 container. If you use an optional host payment picker, ensure every dismissal
 path calls the completion handler exactly once; pass `nil` for cancellation.
+
+## Local dependencies on request
+
+Contact [info@goenergy.am](mailto:info@goenergy.am) for a local integration package.
+The release also includes [GGEnergyKit-0.1.7.zip](https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.1.7/GGEnergyKit-0.1.7.zip)
+and its [checksum file](https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.1.7/GGEnergyKit-0.1.7.zip.sha256).
+Download both to the same folder, then verify and extract:
+
+```sh
+shasum -a 256 -c GGEnergyKit-0.1.7.zip.sha256
+unzip GGEnergyKit-0.1.7.zip
+```
+
+In Xcode, add the extracted folder containing `Package.swift` as a local package
+and select **GGEnergyKit**.
+This archive includes ggEnergy locally but downloads 2GIS remotely.
+For fully local dependencies, request a package with compatible map dependencies
+and approved redistribution terms.

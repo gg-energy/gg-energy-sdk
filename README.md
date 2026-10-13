@@ -14,12 +14,33 @@ Android apps without an existing 2GIS integration can install from Maven
 Central:
 
 ```kotlin
-implementation("gg.team.energy:sdk-energy:0.1.6")
+implementation("gg.team.energy:sdk-energy:0.1.7")
 ```
 
 If your Android app already has a compatible 2GIS runtime, choose the
-[external-map artifact](docs/android.md). For iOS, install the
-[versioned `GGEnergyKit` release archive](docs/ios.md).
+[external-map artifact](docs/android.md).
+
+## iOS quick start (remote SPM)
+
+Requires **iOS 16 or later**.
+
+1. In Xcode, choose **File → Add Package Dependencies**.
+2. Enter `https://github.com/gg-energy/gg-energy-sdk.git`.
+3. Select **Exact Version: 0.1.7** and add **GGEnergyKit** to your app target.
+4. Add a location usage description to `Info.plist` ([example](docs/ios.md#2-allow-location-access)).
+5. Get a fresh bootstrap token from your backend and open the SDK on the main thread:
+
+```swift
+import GGEnergyKit
+
+try GGEnergySdk.open(
+    from: viewController,
+    bootstrapToken: bootstrapToken
+)
+```
+
+Xcode downloads the SDK and checks its checksum automatically. See the
+[iOS guide](docs/ios.md) if your app already uses 2GIS or needs local dependencies.
 
 ## Bootstrap API
 
@@ -51,7 +72,7 @@ by the mobile app. The response contains a one-time token:
 
 Return the token to the app and open the SDK with it:
 [Android launch example](docs/android.md#3-open-the-sdk) ·
-[iOS launch example](docs/ios.md#3-open-the-sdk-with-the-included-map-setup).
+[iOS launch example](docs/ios.md#3-open-energy).
 Request a new token for every launch; do not store or log it. Your app must
 authenticate the user, and only your backend may use the partner credentials.
 See [Backend integration](docs/backend-integration.md) for failure handling.
