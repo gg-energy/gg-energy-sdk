@@ -28,8 +28,8 @@ let package = Package(
         // package is archived as a versioned GitHub Release asset.
         .binaryTarget(
             name: "GGEnergy",
-            url: "https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.1.7/GGEnergy-0.1.7.xcframework.zip",
-            checksum: "15aaf155a685ba5bed35c5a3ebe9ec701476431830a67b9d8fbc870e4ee7467f"
+            url: "https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.2.0/GGEnergy-0.2.0.xcframework.zip",
+            checksum: "b949e1f74f016c396360155ee733b16f3295983e08f7161b71526d58b93c13fd"
         ),
         .target(
             name: "GGEnergyKit",

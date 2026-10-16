@@ -14,7 +14,7 @@ Android apps without an existing 2GIS integration can install from Maven
 Central:
 
 ```kotlin
-implementation("gg.team.energy:sdk-energy:0.1.7")
+implementation("gg.team.energy:sdk-energy:0.2.0")
 ```
 
 If your Android app already has a compatible 2GIS runtime, choose the
@@ -26,7 +26,7 @@ Requires **iOS 16 or later**.
 
 1. In Xcode, choose **File → Add Package Dependencies**.
 2. Enter `https://github.com/gg-energy/gg-energy-sdk.git`.
-3. Select **Exact Version: 0.1.7** and add **GGEnergyKit** to your app target.
+3. Select **Exact Version: 0.2.0** and add **GGEnergyKit** to your app target.
 4. Add a location usage description to `Info.plist` ([example](docs/ios.md#2-allow-location-access)).
 5. Get a fresh bootstrap token from your backend and open the SDK on the main thread:
 

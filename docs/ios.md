@@ -10,7 +10,7 @@ In Xcode, choose **File → Add Package Dependencies** and enter:
 https://github.com/gg-energy/gg-energy-sdk.git
 ```
 
-Choose **Exact Version: 0.1.7**, then add **GGEnergyKit** to your app target.
+Choose **Exact Version: 0.2.0**, then add **GGEnergyKit** to your app target.
 Xcode downloads the SDK and verifies its checksum automatically.
 Commit `Package.resolved` to keep your team's dependency versions consistent.
 
@@ -89,13 +89,13 @@ path calls the completion handler exactly once; pass `nil` for cancellation.
 ## Local dependencies on request
 
 Contact [info@goenergy.am](mailto:info@goenergy.am) for a local integration package.
-The release also includes [GGEnergyKit-0.1.7.zip](https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.1.7/GGEnergyKit-0.1.7.zip)
-and its [checksum file](https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.1.7/GGEnergyKit-0.1.7.zip.sha256).
+The release also includes [GGEnergyKit-0.2.0.zip](https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.2.0/GGEnergyKit-0.2.0.zip)
+and its [checksum file](https://github.com/gg-energy/gg-energy-sdk/releases/download/v0.2.0/GGEnergyKit-0.2.0.zip.sha256).
 Download both to the same folder, then verify and extract:
 
 ```sh
-shasum -a 256 -c GGEnergyKit-0.1.7.zip.sha256
-unzip GGEnergyKit-0.1.7.zip
+shasum -a 256 -c GGEnergyKit-0.2.0.zip.sha256
+unzip GGEnergyKit-0.2.0.zip
 ```
 
 In Xcode, add the extracted folder containing `Package.swift` as a local package

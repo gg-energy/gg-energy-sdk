@@ -3,7 +3,14 @@
 Integration changes and fixes are listed by version. Published versions are
 immutable; use a newer version for fixes.
 
-## [0.1.7] - Unreleased
+## [0.2.0] - Unreleased
+
+### Fixed
+
+- Enable the host payment picker for ggPartner on Android and iOS, alongside
+  gg customer.
+
+## [0.1.7]
 
 ### Added
 
